@@ -1,0 +1,18 @@
+.item_d {
+  display: flex;
+  color: #000;
+  text-decoration: none;
+  text-align: center;
+}
+
+.profile_img {
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  margin-right: 1rem;
+}
+
+.padding {
+  padding: 1rem;
+}

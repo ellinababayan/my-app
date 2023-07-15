@@ -1,0 +1,23 @@
+.nav {
+    grid-area: n;
+    background-color: #002D62;
+    padding: 2rem;
+    height: 160vh;
+}
+
+/* .nav a {
+    color: black 
+} */
+
+.nav a:focus {
+    transform: scale(0.95);
+}
+
+.item {
+    color: #FFEFD5;
+    text-decoration: none;
+}
+
+.active {
+    color: white;
+}

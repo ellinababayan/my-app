@@ -1,0 +1,27 @@
+.header {
+    grid-area: h;
+    background-color: #eee;   
+}
+
+.header img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 0.3rem;
+    margin-left: 1.3rem;
+}
+
+.header h1 {
+    font-size: 29px;
+    /* position: relative; */
+    display: inline-block;
+    position: absolute;
+    text-transform: uppercase;
+    padding-left: 0.5rem;
+}
+
+.login {
+    float: right;
+    color: black;
+    padding: 0.7rem;
+}

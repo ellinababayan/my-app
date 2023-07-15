@@ -1,0 +1,14 @@
+.feed img {
+  width: 100%;
+  height: 80vh;
+}
+
+.profileImg {
+  padding: 2rem;
+  max-width: 6rem;
+}
+
+.name {
+  margin: 2rem;
+  background-color: white;
+}
