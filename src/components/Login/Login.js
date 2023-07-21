@@ -1,5 +1,8 @@
 import React from "react";
 import classes from "./Login.module.css";
+import styles from "../base/Buttons.module.css";
+import stylerule from "../base/Errors.module.css";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 
 const Login = (props) => {
   const togglePassword = () => {
@@ -12,42 +15,109 @@ const Login = (props) => {
   };
 
   return (
-    <div className={classes.login}>
-      <div className={classes.loginField}>
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-          integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
-          crossOrigin="anonymous"
-          referrerPolicy="no-referrer"
-        />
-        <h1 className={classes.loginName}>You need to Sign In</h1>
-        <form>
-          <label htmlFor="login" className={classes.label}>
-            Login
-          </label>
-          <input type="email" name="login" className={classes.input}></input>
-          <label htmlFor="password" className={classes.label}>
-            Password
-          </label>
-          <div>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              className={classes.input}
-            ></input>
-            <span className={classes.eye} onClick={togglePassword}>
-              <i id="toggler" className="far fa-eye"></i>
-            </span>
+    <div className={classes.login} onSubmit={props.handleSubmit}>
+      <Formik
+        initialValues={{ email: "", password: "" }}
+        validate={(values) => {
+          const errors = {};
+          if (!values.email) {
+            errors.email = "Required";
+          }
+          if (!values.password) {
+            errors.password = "Required";
+          }
+          return errors;
+        }}
+        onSubmit={(values, { setSubmitting }) => {
+          setTimeout(() => {
+            alert(JSON.stringify(values, null, 2));
+            setSubmitting(false);
+          }, 400);
+        }}
+      >
+        {({ isSubmitting }) => (
+          <div className={classes.loginField}>
+            <link
+              rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+              integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+              crossOrigin="anonymous"
+              referrerPolicy="no-referrer"
+            />
+            <h1 className={classes.loginName}>You need to Sign In</h1>
+            <Form>
+              <label htmlFor="login" className={classes.label}>
+                Login
+              </label>
+              <Field type="email" name="email" className={classes.input} />
+
+              <div className={stylerule.error}>
+                <ErrorMessage
+                  name="email"
+                  component="div"
+                  className={stylerule.error_message}
+                />
+              </div>
+
+              <label htmlFor="password" className={classes.label}>
+                Password
+              </label>
+              <div>
+                <Field
+                  type="password"
+                  name="password"
+                  id="password"
+                  className={classes.input}
+                />
+                <span className={classes.eye} onClick={togglePassword}>
+                  <i id="toggler" className="far fa-eye"></i>
+                </span>
+              </div>
+
+              <div className={stylerule.error}>
+                <ErrorMessage
+                  name="password"
+                  component="div"
+                  className={stylerule.error_message}
+                />
+              </div>
+
+              <label className={classes.remember} htmlFor="rememberMe">
+                <input
+                  type={"checkbox"}
+                  name="rememberMe"
+                  className={classes.checkbox}
+                  id="rememberMe"
+                />
+                <div className={classes.checkbox_input}></div>
+                Remember me
+              </label>
+
+              <div className={classes.buttonDiv}>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={styles.button_apricot}
+                >
+                  Submit
+                </button>
+              </div>
+            </Form>
           </div>
-          <div className={classes.buttonDiv}>
-            <input className={classes.button} type="submit" value="Submit" />
-          </div>
-        </form>
-      </div>
+        )}
+      </Formik>
     </div>
   );
 };
+
+// export const LoginContainer = (props) => {
+
+//   const onSubmit = (formData) => {
+//     console.log(formData)
+//   }
+//   return <div>
+//     <Login onSubmit={onSubmit} />
+//   </div>
+// }
 
 export default Login;

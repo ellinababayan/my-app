@@ -78,6 +78,7 @@ export const toogleIsLoading = (isLoading) => {
 };
 
 export const toogleIsFollowing = (isLoading, userId) => {
+  debugger
   return {
     type: "TOOGLE_IS_FOLLOWING",
     isLoading,
@@ -99,6 +100,7 @@ export const getUsers = (currentPage, pageSize) => {
 };
 
 export const followThunkCreator = (userId) => {
+  debugger
   return (dispatch) => {
     dispatch(toogleIsFollowing(true, userId));
     usersAPI.follow(userId).then((data) => {
@@ -111,6 +113,7 @@ export const followThunkCreator = (userId) => {
 };
 
 export const unfollowThunkCreator = (userId) => {
+  debugger
   return (dispatch) => {
     dispatch(toogleIsFollowing(true, userId));
     usersAPI.unfollow(userId).then((data) => {

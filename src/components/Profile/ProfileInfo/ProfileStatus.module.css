@@ -1,0 +1,25 @@
+.profileStatus_container {
+  padding: 0.5rem 0rem;
+  display: block;
+}
+
+.current_status {
+  border-radius: 0.5rem;
+  border: 0.07rem solid rgba(60, 90, 145, 0.9);
+  padding: 0rem 0.2rem;
+  background-color: rgba(100, 149, 237, 0.2);
+}
+
+.input_status {
+  border-radius: 0.5rem;
+  border: 0.07rem solid rgba(200, 201, 202, 0.9);
+  padding: 0rem 0.2rem;
+}
+
+.profileStatus {
+  padding: 0rem;
+  display: inline-block;
+  margin: 0rem;
+  font-style: italic;
+  font-size: 0.8rem;
+}

@@ -2,7 +2,7 @@
     grid-area: n;
     background-color: #002D62;
     padding: 2rem;
-    height: 160vh;
+    /* height: 96vh; */
 }
 
 /* .nav a {
@@ -14,10 +14,12 @@
 }
 
 .item {
-    color: #FFEFD5;
+    color: white;
     text-decoration: none;
 }
 
 .active {
     color: white;
+    text-decoration: underline;
+    
 }

@@ -1,6 +1,11 @@
 .usersPage {
   padding: 1rem 2rem;
 }
+
+.user {
+  margin: 1rem;
+}
+
 .usersPhoto {
   width: 100px;
   height: 100px;
@@ -10,7 +15,6 @@
 .selectedPage {
   font-weight: bold;
   font-size: larger;
-  /* background-color: #002D62; */
   animation-name: ease-out;
   animation-duration: 2s;
   animation-fill-mode: forwards;
@@ -23,9 +27,9 @@
     background-color: transparent;
     border-radius: 1rem;
     color: black;
-    }
+  }
   100% {
-    background-color: #002D62;
+    background-color: #002d62;
     border-radius: 1rem;
     color: white;
   }

@@ -1,5 +1,6 @@
 .item_m {
-  padding: 1rem;
+  padding: 2rem;
   color: #000;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 0.5rem;
 }

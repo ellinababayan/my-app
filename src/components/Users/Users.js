@@ -1,12 +1,16 @@
 import React from "react";
 import styles from "./Users.module.css";
 import { NavLink } from "react-router-dom";
+import classes from "../base/Buttons.module.css";
 
 let Users = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
   let pages = [];
+  // let start = Math.max(0, props.totalUsersCount.index - 2);
+  // let end = Math.min(start + 5, props.totalUsersCount.length - 1);
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
+    // return pages
   }
   // to make viewable only limited number of pages
 
@@ -22,6 +26,7 @@ let Users = (props) => {
         {pages.map((p) => {
           return (
             <span
+              key={p.id}
               className={props.currentPage === p ? styles.selectedPage : ""}
               onClick={() => {
                 props.onPageChanged(p);
@@ -33,7 +38,7 @@ let Users = (props) => {
         })}
       </div>
       {props.users.map((u) => (
-        <div key={u.id}>
+        <div key={u.id} className={styles.user}>
           <span>
             <div>
               <NavLink to={"/profile/" + u.id}>
@@ -55,6 +60,8 @@ let Users = (props) => {
                   onClick={() => {
                     props.unfollowThunkCreator(u.id);
                   }}
+                  className={classes.button}
+                  key={u.id}
                 >
                   Unfollow
                 </button>
@@ -64,6 +71,8 @@ let Users = (props) => {
                   onClick={() => {
                     props.followThunkCreator(u.id);
                   }}
+                  className={classes.button}
+                  key={u.id}
                 >
                   Follow
                 </button>
@@ -74,10 +83,6 @@ let Users = (props) => {
             <span>
               <div>{u.name}</div>
               <div>{u.status}</div>
-            </span>
-            <span>
-              <div>{"u.location.country"}</div>
-              <div>{"u.location.city"}</div>
             </span>
           </span>
         </div>

@@ -1,0 +1,11 @@
+.error {
+  text-transform: lowercase;
+  /* font-style: italic; */
+  padding:  0.1rem 0.5rem 0.5rem 0.5rem;
+  opacity: 0.7;
+}
+
+.error_message {
+  color: red;
+  font-size: 0.8rem;
+}

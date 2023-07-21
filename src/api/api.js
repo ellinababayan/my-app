@@ -28,12 +28,25 @@ export const usersAPI = {
   },
 
   getProfile(userId) {
-    return constantUrl.get(`profile/${userId}`);
+    // return constantUrl.get(`profile/${userId}`);
+    return profileAPI.getProfile(userId);
   },
 };
 
 export const authAPI = {
   getHeader() {
     return constantUrl.get(`auth/me`);
+  },
+};
+
+export const profileAPI = {
+  getProfile(userId) {
+    return constantUrl.get(`profile/${userId}`);
+  },
+  getStatus(userId) {
+    return constantUrl.get(`profile/status/${userId}`);
+  },
+  updateStatus(status) {
+    return constantUrl.put(`profile/status`, { status: status });
   },
 };

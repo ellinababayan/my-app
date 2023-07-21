@@ -2,7 +2,8 @@ import React from "react";
 import classes from "./Dialogs.module.css";
 import DialogItem from "./Items/DialogItem";
 import Messages from "./Items/Messages";
-import { Navigate } from "react-router-dom";
+import styles from "../base/Buttons.module.css";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 
 const Dialogs = (props) => {
   let state = props.dialogsPage;
@@ -34,20 +35,66 @@ const Dialogs = (props) => {
   };
 
   return (
-    <div className={classes.dialogs}>
-      <div className={classes.dialog_items}>{dialogsElements}</div>
-      <div className={classes.messages}>
-        <div>{messageElements}</div>
-        <div>
+    <div className={classes.dialogsPage}>
+      <div className={classes.dialogs}>
+        <div className={classes.dialog_items}>{dialogsElements}</div>
+        <div className={classes.messages}>
+          <div>{messageElements}</div>
           <div>
-            <textarea
-              value={newMessageData}
-              onChange={onNewMessageChange}
-              placeholder="Enter your message"
-            ></textarea>
-          </div>
-          <div>
-            <button onClick={onSendMessage}>Send</button>
+            <div>
+              {/* <textarea
+                value={newMessageData}
+                onChange={onNewMessageChange}
+                placeholder="Enter your message"
+              ></textarea> */}
+              <Formik
+                initialValues={{ newMessage: "" }}
+                validate={(values) => {
+                  const errors = {};
+                  if (!values.newMessage) {
+                    errors.newMessage = "Please create your new post";
+                  }
+                  return errors;
+                }}
+                onSubmit={(values, { setSubmitting }) => {
+                  // setTimeout(() => {
+                  alert(values.newMessage);
+                  console.log(values.newMessage);
+                  let text = values.newMessage;
+                  props.updatePost(text);
+                  setSubmitting(false);
+                  // }, 0);
+                }}
+              >
+                {({ isSubmitting }) => (
+                  <div className={classes.loginField}>
+                    <Form>
+                      <label
+                        htmlFor="newMessage"
+                        className={classes.label}
+                      ></label>
+                      <Field
+                        type="newMessage"
+                        name="newMessage"
+                        className={classes.textarea}
+                        placeholder="Enter your message"
+                      />
+                      {/* <ErrorMessage name="password" component="div" /> */}
+                      <div>
+                        <button
+                          type="submit"
+                          disabled={isSubmitting}
+                          className={styles.button_apricot}
+                          onClick={onSendMessage}
+                        >
+                          Send
+                        </button>
+                      </div>
+                    </Form>
+                  </div>
+                )}
+              </Formik>
+            </div>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ import LoadingImg from "./Loading.svg";
 
 let Loading = (props) => {
   return (
-    <div style={{ backgroundColor: "white" }}>
+    <div style={{ backgroundColor: "white"}}>
       <img src={LoadingImg} />
     </div>
   );

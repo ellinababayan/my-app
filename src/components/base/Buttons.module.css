@@ -1,0 +1,60 @@
+.button {
+  border-radius: 2rem;
+  padding: 10px;
+  font-size: 0.85rem;
+  background-color: #eee;
+  border: none;
+  cursor: pointer;
+}
+
+.button_mypost {
+  border-radius: 2rem;
+  padding: 15px;
+  background-color: #eee;
+  border: none;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.button:hover, .button_mypost:hover {
+  background-color: #041e42;
+  color: white;
+  transition: 0.5s;
+}
+
+.button:active, .button_mypost:active {
+  transform: scale(0.96);
+}
+
+.button_apricot {
+  border-radius: 5rem;
+  padding: 0.6rem;
+  border: none;
+  background-color: #002d62;
+  color: white;
+  margin: 1rem 4rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 2px 2px 2px white;
+}
+
+.button_apricot:hover {
+  animation-name: button_apricot;
+  animation-duration: 0.5s;
+  transition: ease;
+  animation-fill-mode: forwards;
+}
+
+.button_apricot:active {
+  transform: translateY(2px);
+}
+
+@keyframes button_apricot {
+  0% {
+    background-color: #002d62;
+  }
+  100% {
+    background-color: #ffa07a;
+    color: black;
+  }
+}

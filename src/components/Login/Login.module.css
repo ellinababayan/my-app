@@ -1,6 +1,7 @@
 .login {
-  width: 84vw;
   background-image: url("https://images.unsplash.com/photo-1597773150796-e5c14ebecbf5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFyayUyMGJsdWUlMjB0ZXh0dXJlfGVufDB8fDB8fA%3D%3D&w=1000&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .loginField {
@@ -50,39 +51,44 @@
   transform: translateY(1.5px);
 }
 
+.remember {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 0;
+}
+
+.checkbox_input {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid #ccc;
+  border-radius: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.checkbox_input::after {
+  content: "\2714";
+  transform: scale(0);
+}
+
+.checkbox:checked + .checkbox_input {
+  background: #ffa07a;
+  border-color: #ffa07a;
+}
+
+.checkbox:checked + .checkbox_input::after {
+  transform: scale(1);
+}
+
 .buttonDiv {
   text-align: center;
-}
-
-.button {
-  border-radius: 5rem;
-  padding: 0.6rem;
-  border: none;
-  background-color: #002d62;
-  color: white;
-  margin: 1rem 4rem;
-  cursor: pointer;
-  text-transform: uppercase;
-  box-shadow: 2px 2px 2px white;
-}
-
-.button:hover {
-  animation-name: button;
-  animation-duration: 0.5s;
-  transition: ease;
-  animation-fill-mode: forwards;  
-}
-
-.button:active {
-  transform: translateY(2px);
-}
-
-@keyframes button {
-  0% {
-    background-color: #002d62;
-  }
-  100% {
-    background-color: #ffa07a;
-    color: black;
-  }
 }

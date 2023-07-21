@@ -1,8 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import {
-  // follow,
-  // unfollow,
   setCurrentPage,
   toogleIsFollowing,
   getUsers,
@@ -15,7 +13,7 @@ import Loading from "../base/Loading/Loading";
 class UsersContainer extends React.Component {
   constructor(props) {
     super(props);
-  }
+  } 
 
   componentDidMount() {
     this.props.getUsers(this.props.currentPage, this.props.pageSize);
@@ -26,6 +24,7 @@ class UsersContainer extends React.Component {
   };
 
   render() {
+    // debugger
     return (
       <>
         {this.props.isLoading ? <Loading /> : null}
