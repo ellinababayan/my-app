@@ -1,9 +1,11 @@
-.usersPage {
+/* .usersPage {
   padding: 1rem 2rem;
 }
 
 .user {
   margin: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid gray;
 }
 
 .usersPhoto {
@@ -45,3 +47,94 @@
   color: white;
   background-color: blue;
 } */
+
+
+
+
+
+/* Users.module.css */
+
+.usersPage {
+  padding: 2rem;
+  background-color: #f5f5f5;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.usersPhoto {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+
+.userDetails {
+  flex: 1;
+}
+
+.userActions {
+  display: flex;
+  gap: 1rem;
+}
+
+.selectedPage {
+  font-weight: bold;
+  font-size: larger;
+  animation: ease-out 2s forwards;
+  cursor: pointer;
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.5rem;
+  background-color: #002d62;
+  color: white;
+}
+
+.choosePage {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+.paginationButton {
+  border: none;
+  background-color: transparent;
+  color: #555;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.paginationButton:hover {
+  color: #002d62;
+}
+
+.paginationButton.active {
+  color: #002d62;
+  font-weight: bold;
+}
+
+/* Optional: Add responsive design styles */
+@media screen and (max-width: 768px) {
+  .user {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .usersPhoto {
+    margin: 0 auto 1rem;
+  }
+
+  .userActions {
+    justify-content: center;
+  }
+}
+

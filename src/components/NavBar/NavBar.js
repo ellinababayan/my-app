@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const NavBar = () => {
   return (
     <nav className={classes.nav}>
-      <div>
+      <div className={classes.navItem}>
         <NavLink
           to="/profile"
           className={(navData) =>
@@ -15,7 +15,7 @@ const NavBar = () => {
           Profile
         </NavLink>
       </div>
-      <div>
+      <div className={classes.navItem}>
         <NavLink
           className={(navData) =>
             navData.isActive ? classes.active : classes.item
@@ -25,7 +25,7 @@ const NavBar = () => {
           Messages
         </NavLink>
       </div>
-      <div>
+      <div className={classes.navItem}>
         <NavLink
           className={(navData) =>
             navData.isActive ? classes.active : classes.item
@@ -35,7 +35,7 @@ const NavBar = () => {
           Users
         </NavLink>
       </div>
-      <div>
+      <div className={classes.navItem}>
         <NavLink
           className={(navData) =>
             navData.isActive ? classes.active : classes.item
@@ -45,7 +45,7 @@ const NavBar = () => {
           News
         </NavLink>
       </div>
-      <div>
+      <div className={classes.navItem}>
         <NavLink
           className={(navData) =>
             navData.isActive ? classes.active : classes.item

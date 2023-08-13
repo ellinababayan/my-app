@@ -4,7 +4,7 @@ import { profileAPI } from "../api/api";
 let initialState = {
   postData: [
     { id: 1, message: "Hi, how are you?" },
-    { id: 2, message: "It`s Denisych" },
+    { id: 2, message: "It`s Ellina" },
     { id: 3, message: 3 },
     { id: 4, message: 4 },
     { id: 5, message: 5 },

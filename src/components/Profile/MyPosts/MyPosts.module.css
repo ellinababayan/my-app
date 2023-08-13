@@ -11,6 +11,10 @@
   box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
 }
 
+.textarea::placeholder {
+  font-size: 14px;
+}
+
 .posts img {
   width: 50px;
   height: 50px;

@@ -7,6 +7,16 @@
   cursor: pointer;
 }
 
+.button1 {
+  border-radius: 2rem;
+  padding: 10px;
+  font-size: 0.85rem;
+  background-color: #eee;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+}
+
 .button_mypost {
   border-radius: 2rem;
   padding: 15px;

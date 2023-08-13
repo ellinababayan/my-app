@@ -1,25 +1,30 @@
 .nav {
-    grid-area: n;
-    background-color: #002D62;
-    padding: 2rem;
-    /* height: 96vh; */
+  grid-area: n;
+  background-color: #002d62;
+  padding: 2rem;
 }
 
-/* .nav a {
-    color: black 
-} */
-
 .nav a:focus {
-    transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+.navItem {
+  padding: 1rem;
+  /* text-align: center; */
 }
 
 .item {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
 .active {
-    color: white;
-    text-decoration: underline;
-    
+  color: black;
+  padding: 0.4rem 0.8rem;
+  border-radius: 1rem;
+  text-decoration: none;
+
+  background-color: white;
+  border-radius: 0.3rem;
+
 }

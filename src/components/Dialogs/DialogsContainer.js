@@ -1,5 +1,4 @@
 import AuthNavigate from "../../hoc/AuthRedirect";
-import { getAuthThunkCreator } from "../../redux/auth-reducer";
 import {
   sendMessageCreator,
   updateNewMessageBodyCreator,
@@ -7,7 +6,6 @@ import {
 import Dialogs from "./Dialogs";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import ProfileContainer from "../Profile/ProfileContainer";
 
 let mapStateToProps = (state) => {
   return { dialogsPage: state.dialogsPage, isAuth: state.auth.isAuth };

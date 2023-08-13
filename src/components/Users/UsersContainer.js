@@ -1,8 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
   setCurrentPage,
-  toogleIsFollowing,
   getUsers,
   unfollowThunkCreator,
   followThunkCreator,
@@ -10,11 +9,7 @@ import {
 import Users from "./Users";
 import Loading from "../base/Loading/Loading";
 
-class UsersContainer extends React.Component {
-  constructor(props) {
-    super(props);
-  } 
-
+class UsersContainer extends Component {
   componentDidMount() {
     this.props.getUsers(this.props.currentPage, this.props.pageSize);
   }
@@ -24,26 +19,38 @@ class UsersContainer extends React.Component {
   };
 
   render() {
-    // debugger
+    const { currentPage, pageSize, totalUsersCount, users, isLoading } =
+      this.props;
+    const pagesCount = Math.ceil(totalUsersCount / pageSize);
+
+    const visiblePagesRange = 10;
+    const pageRangeStart = Math.max(currentPage - 5, 1);
+    const pageRangeEnd = Math.min(
+      pageRangeStart + visiblePagesRange - 1,
+      pagesCount
+    );
+
     return (
       <>
-        {this.props.isLoading ? <Loading /> : null}
+        {isLoading ? <Loading /> : null}
         <Users
-          totalUsersCount={this.props.totalUsersCount}
-          pageSize={this.props.pageSize}
-          currentPage={this.props.currentPage}
+          totalUsersCount={totalUsersCount}
+          pageSize={pageSize}
+          currentPage={currentPage}
           onPageChanged={this.onPageChanged}
-          users={this.props.users}
+          users={users}
           followThunkCreator={this.props.followThunkCreator}
           unfollowThunkCreator={this.props.unfollowThunkCreator}
           followingInProgress={this.props.followingInProgress}
+          pageRangeEnd={pageRangeEnd}
+          pageRangeStart={pageRangeStart}
         />
       </>
     );
   }
 }
 
-let mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
   return {
     users: state.usersPage.users,
     pageSize: state.usersPage.pageSize,
@@ -56,7 +63,6 @@ let mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   setCurrentPage,
-  toogleIsFollowing,
   getUsers,
   unfollowThunkCreator,
   followThunkCreator,

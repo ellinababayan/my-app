@@ -37,6 +37,12 @@ export const authAPI = {
   getHeader() {
     return constantUrl.get(`auth/me`);
   },
+  login(email, password, rememberMe = false) {
+    return constantUrl.post(`auth/login`, { email, password, rememberMe });
+  },
+  logout() {
+    return constantUrl.delete(`auth/login`);
+  },
 };
 
 export const profileAPI = {

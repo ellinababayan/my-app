@@ -3,7 +3,7 @@ import classes from "./Dialogs.module.css";
 import DialogItem from "./Items/DialogItem";
 import Messages from "./Items/Messages";
 import styles from "../base/Buttons.module.css";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
 
 const Dialogs = (props) => {
   let state = props.dialogsPage;
@@ -23,17 +23,6 @@ const Dialogs = (props) => {
     return <Messages message={msg.message} key={msg.id} />;
   });
 
-  let newMessageData = state.newMessageData;
-
-  let onSendMessage = () => {
-    props.sendNewMessageBody();
-  };
-
-  let onNewMessageChange = (event) => {
-    let body = event.target.value;
-    props.updateNewMessageBody(body);
-  };
-
   return (
     <div className={classes.dialogsPage}>
       <div className={classes.dialogs}>
@@ -42,11 +31,6 @@ const Dialogs = (props) => {
           <div>{messageElements}</div>
           <div>
             <div>
-              {/* <textarea
-                value={newMessageData}
-                onChange={onNewMessageChange}
-                placeholder="Enter your message"
-              ></textarea> */}
               <Formik
                 initialValues={{ newMessage: "" }}
                 validate={(values) => {
@@ -56,14 +40,12 @@ const Dialogs = (props) => {
                   }
                   return errors;
                 }}
-                onSubmit={(values, { setSubmitting }) => {
-                  // setTimeout(() => {
-                  alert(values.newMessage);
-                  console.log(values.newMessage);
+                onSubmit={(values, { setSubmitting, resetForm }) => {
                   let text = values.newMessage;
-                  props.updatePost(text);
+                  props.updateNewMessageBody(text);
+                  props.sendNewMessageBody(text);
+                  resetForm();
                   setSubmitting(false);
-                  // }, 0);
                 }}
               >
                 {({ isSubmitting }) => (
@@ -79,13 +61,11 @@ const Dialogs = (props) => {
                         className={classes.textarea}
                         placeholder="Enter your message"
                       />
-                      {/* <ErrorMessage name="password" component="div" /> */}
                       <div>
                         <button
                           type="submit"
                           disabled={isSubmitting}
                           className={styles.button_apricot}
-                          onClick={onSendMessage}
                         >
                           Send
                         </button>

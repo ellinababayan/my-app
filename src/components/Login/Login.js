@@ -2,7 +2,8 @@ import React from "react";
 import classes from "./Login.module.css";
 import styles from "../base/Buttons.module.css";
 import stylerule from "../base/Errors.module.css";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, connect } from "formik";
+import { NavLink } from "react-router-dom";
 
 const Login = (props) => {
   const togglePassword = () => {
@@ -21,10 +22,10 @@ const Login = (props) => {
         validate={(values) => {
           const errors = {};
           if (!values.email) {
-            errors.email = "Required";
+            errors.email = "email is required";
           }
           if (!values.password) {
-            errors.password = "Required";
+            errors.password = "password is required";
           }
           return errors;
         }}
@@ -44,12 +45,17 @@ const Login = (props) => {
               crossOrigin="anonymous"
               referrerPolicy="no-referrer"
             />
-            <h1 className={classes.loginName}>You need to Sign In</h1>
+            <h1 className={classes.loginName}>You need to Log In</h1>
             <Form>
               <label htmlFor="login" className={classes.label}>
                 Login
               </label>
-              <Field type="email" name="email" className={classes.input} />
+              <Field
+                type="email"
+                name="email"
+                className={classes.input}
+                placeholder="seasocial@gmail.com"
+              />
 
               <div className={stylerule.error}>
                 <ErrorMessage
@@ -68,6 +74,7 @@ const Login = (props) => {
                   name="password"
                   id="password"
                   className={classes.input}
+                  placeholder="password"
                 />
                 <span className={classes.eye} onClick={togglePassword}>
                   <i id="toggler" className="far fa-eye"></i>
@@ -98,10 +105,19 @@ const Login = (props) => {
                   type="submit"
                   disabled={isSubmitting}
                   className={styles.button_apricot}
+                  // onSubmit={}
                 >
                   Submit
                 </button>
               </div>
+              {/* <div>
+                <NavLink to="/login">
+                  <div className={classes.already}>
+                    Don`t have account?{" "}
+                    <span className={classes.underline}>Sign Up</span>
+                  </div>
+                </NavLink>
+              </div> */}
             </Form>
           </div>
         )}
@@ -110,14 +126,4 @@ const Login = (props) => {
   );
 };
 
-// export const LoginContainer = (props) => {
-
-//   const onSubmit = (formData) => {
-//     console.log(formData)
-//   }
-//   return <div>
-//     <Login onSubmit={onSubmit} />
-//   </div>
-// }
-
-export default Login;
+export default connect(null, {login}) (Login); //was just export default Login

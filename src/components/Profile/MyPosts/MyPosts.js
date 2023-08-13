@@ -10,10 +10,6 @@ const MyPosts = (props) => {
     return <Post message={data.message} key={data.id} />;
   });
 
-  let addPost = () => {
-    props.addPost();
-  };
-
   return (
     <div className={classes.my_post}>
       <h3>My posts</h3>
@@ -27,10 +23,11 @@ const MyPosts = (props) => {
             }
             return errors;
           }}
-          onSubmit={(values, { setSubmitting }) => {
-            console.log(values.newPost);
+          onSubmit={(values, { setSubmitting, resetForm }) => {
             let text = values.newPost;
             props.updatePost(text);
+            props.addPost(text);
+            resetForm();
             setSubmitting(false);
           }}
         >
@@ -53,7 +50,6 @@ const MyPosts = (props) => {
                     type="submit"
                     disabled={isSubmitting}
                     className={styles.button_mypost}
-                    onClick={addPost}
                   >
                     Add Post
                   </button>
