@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./Login.module.css";
 import styles from "../base/Buttons.module.css";
 import stylerule from "../base/Errors.module.css";
 import { Formik, Form, Field, ErrorMessage, connect } from "formik";
 import loginUser from "../../redux/services/login.service";
 import { useNavigate } from "react-router";
-import { useState } from "react";
 
 const Login = (props) => {
   const togglePassword = () => {
@@ -18,15 +17,17 @@ const Login = (props) => {
   };
 
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('token') !== null);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    localStorage.getItem("token") !== null
+  );
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleLogin = async (values, actions) => {
     try {
       const loginResult = await loginUser(values, navigate);
       if (loginResult) {
         setIsLoggedIn(true);
-        navigate('/home')
+        navigate("/home");
       }
     } catch (error) {
       setErrorMessage(error.message);
@@ -119,10 +120,14 @@ const Login = (props) => {
                   type="submit"
                   disabled={isSubmitting}
                   className={styles.button_apricot}
-                  // onSubmit={}
                 >
                   Submit
                 </button>
+              </div>
+              <div className={classes.buttonDiv}>
+                {errorMessage && (
+                  <div className={classes.error_message}>{errorMessage}</div>
+                )}
               </div>
             </Form>
           </div>
@@ -133,4 +138,4 @@ const Login = (props) => {
 };
 
 // export default connect(null, {login}) (Login); //was just export default Login
-export default Login
+export default Login;
