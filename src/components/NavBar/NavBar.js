@@ -12,6 +12,8 @@ const NavBar = () => {
             navData.isActive ? classes.active : classes.item
           }
         >
+          {" "}
+          <i className="fa fa-home" aria-hidden="true"></i>
           Profile
         </NavLink>
       </div>
@@ -22,6 +24,7 @@ const NavBar = () => {
           }
           to="/dialogs"
         >
+          <i className="fa fa-message" aria-hidden="true"></i>
           Messages
         </NavLink>
       </div>
@@ -32,6 +35,7 @@ const NavBar = () => {
           }
           to="/users"
         >
+          <i className="fa fa-user" aria-hidden="true"></i>
           Users
         </NavLink>
       </div>
@@ -42,16 +46,19 @@ const NavBar = () => {
           }
           to="/news"
         >
+          <i className="fa fa-newspaper" aria-hidden="true"></i>
           News
         </NavLink>
       </div>
       <div className={classes.navItem}>
+        
         <NavLink
           className={(navData) =>
             navData.isActive ? classes.active : classes.item
           }
           to="/settings"
         >
+          <i className="fa fa-cog"></i>
           Settings
         </NavLink>
       </div>

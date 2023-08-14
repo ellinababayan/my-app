@@ -1,6 +1,10 @@
 .nav {
   grid-area: n;
   background-color: #002d62;
+  padding: 1rem;
+}
+
+.fa {
   padding: 2rem;
 }
 
