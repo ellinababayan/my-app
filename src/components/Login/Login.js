@@ -3,6 +3,9 @@ import classes from "./Login.module.css";
 import styles from "../base/Buttons.module.css";
 import stylerule from "../base/Errors.module.css";
 import { Formik, Form, Field, ErrorMessage, connect } from "formik";
+import loginUser from "../../redux/services/login.service";
+import { useNavigate } from "react-router";
+import { useState } from "react";
 
 const Login = (props) => {
   const togglePassword = () => {
@@ -12,6 +15,23 @@ const Login = (props) => {
     } else {
       x.type = "password";
     }
+  };
+
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('token') !== null);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleLogin = async (values, actions) => {
+    try {
+      const loginResult = await loginUser(values, navigate);
+      if (loginResult) {
+        setIsLoggedIn(true);
+        navigate('/home')
+      }
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
+    actions.setSubmitting(false);
   };
 
   return (
@@ -28,12 +48,7 @@ const Login = (props) => {
           }
           return errors;
         }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
-        }}
+        onSubmit={handleLogin}
       >
         {({ isSubmitting }) => (
           <div className={classes.loginField}>
