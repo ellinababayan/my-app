@@ -3,7 +3,6 @@ import classes from "./Login.module.css";
 import styles from "../base/Buttons.module.css";
 import stylerule from "../base/Errors.module.css";
 import { Formik, Form, Field, ErrorMessage, connect } from "formik";
-import { NavLink } from "react-router-dom";
 
 const Login = (props) => {
   const togglePassword = () => {
