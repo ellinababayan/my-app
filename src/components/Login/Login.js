@@ -126,4 +126,5 @@ const Login = (props) => {
   );
 };
 
-export default connect(null, {login}) (Login); //was just export default Login
+// export default connect(null, {login}) (Login); //was just export default Login
+export default Login
