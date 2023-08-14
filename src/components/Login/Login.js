@@ -110,14 +110,6 @@ const Login = (props) => {
                   Submit
                 </button>
               </div>
-              {/* <div>
-                <NavLink to="/login">
-                  <div className={classes.already}>
-                    Don`t have account?{" "}
-                    <span className={classes.underline}>Sign Up</span>
-                  </div>
-                </NavLink>
-              </div> */}
             </Form>
           </div>
         )}
