@@ -25,8 +25,8 @@ const Users = (props) => {
     <div className={styles.usersPage}>
       <div className={styles.choosePage}>
         {currentPage > 1 && (
-          <span onClick={() => onPageChanged(currentPage - 1)}>
-            &lt; Previous &nbsp;
+          <span onClick={() => onPageChanged(currentPage - 1)} className={styles.selectedPage}>
+            &#8678; Previous
           </span>
         )}
         {Array.from(
@@ -42,8 +42,12 @@ const Users = (props) => {
           </span>
         ))}
         {currentPage < pagesCount && (
-          <span onClick={() => onPageChanged(currentPage + 1)}>
-            &nbsp; Next &gt;
+          <span
+            onClick={() => onPageChanged(currentPage + 1)}
+            className={styles.selectedPage}
+          >
+            Next &#8680;
+            
           </span>
         )}
       </div>
@@ -62,34 +66,34 @@ const Users = (props) => {
               />
             </NavLink>
             {/* <div> */}
-              <div className={styles.name}>{u.name}</div>
-              <div>{u.status}</div>
+            <div className={styles.name}>{u.name}</div>
+            <div>{u.status}</div>
             {/* </div> */}
             {/* <div> */}
-              {u.followed ? (
-                <button
-                  disabled={props.followingInProgress.some((id) => id === u.id)}
-                  onClick={() => {
-                    props.unfollowThunkCreator(u.id);
-                  }}
-                  className={classes.button1}
-                  key={u.id}
-                >
-                  Unfollow
-                </button>
-              ) : (
-                <button
-                  disabled={props.followingInProgress.some((id) => id === u.id)}
-                  onClick={() => {
-                    props.followThunkCreator(u.id);
-                  }}
-                  className={classes.button1}
-                  key={u.id}
-                >
-                  Follow
-                </button>
-              )}
-            </div>
+            {u.followed ? (
+              <button
+                disabled={props.followingInProgress.some((id) => id === u.id)}
+                onClick={() => {
+                  props.unfollowThunkCreator(u.id);
+                }}
+                className={classes.button1}
+                key={u.id}
+              >
+                Unfollow
+              </button>
+            ) : (
+              <button
+                disabled={props.followingInProgress.some((id) => id === u.id)}
+                onClick={() => {
+                  props.followThunkCreator(u.id);
+                }}
+                className={classes.button1}
+                key={u.id}
+              >
+                Follow
+              </button>
+            )}
+          </div>
           // </div>
         ))}
       </div>
