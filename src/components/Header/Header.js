@@ -11,11 +11,17 @@ const Header = (props) => {
       />
       <h1>Sea Social</h1>
       <div className={classes.login}>
-        {props.isAuth ? props.login : 
+        {props.isAuth ? (
+          <div>
+            {props.login} &nbsp; <button onClick={props.logoutThunkCreator}>Log out</button>
+          </div>
+        ) : (
           <BrowserRouter>
-            <NavLink to={"/login"} className={classes.visited}>Sign In</NavLink>
+            <NavLink to={"/login"} className={classes.visited}>
+              Sign In
+            </NavLink>
           </BrowserRouter>
-        }
+        )}
       </div>
     </header>
   );

@@ -10,13 +10,6 @@ const Profile = (props) => {
         profile={props.profile}
         status={props.status}
         updateStatus={props.updateStatus}
-        //new
-        // followThunkCreator={props.followThunkCreator}
-        // unfollowThunkCreator={props.unfollowThunkCreator}
-        // followingInProgress={props.followingInProgress}
-        // users={props.users}
-        // totalUsersCount={props.totalUsersCount}
-        //new
       />
       <MyPostsContainer />
     </div>

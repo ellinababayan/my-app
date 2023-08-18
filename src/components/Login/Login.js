@@ -27,7 +27,7 @@ const Login = (props) => {
       const loginResult = await loginUser(values, navigate);
       if (loginResult) {
         setIsLoggedIn(true);
-        navigate("/dialogs");
+        navigate("/profile");
       }
     } catch (error) {
       setErrorMessage(error.message);
