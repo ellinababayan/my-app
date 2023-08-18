@@ -5,13 +5,9 @@ import ProfileStatus from "./ProfileStatus";
 import styles from "../../base/Buttons.module.css";
 
 const ProfileInfo = (props) => {
-  // debugger;
   if (!props.profile) {
     return <Loading />;
   }
-  // new
-  // let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-  // new
   return (
     <div className={classes.background}>
       <div className={classes.feed}>
@@ -24,73 +20,6 @@ const ProfileInfo = (props) => {
           className={classes.profileImg}
           alt="profile_image"
         />
-        <div>
-          {/*
-          // {props.profile.followed ? (
-            <button
-              disabled={props.followingInProgress.some(
-                (id) => id === props.profile.userId
-              )}
-              onClick={() => {
-                props.unfollowThunkCreator(props.profile.userId);
-              }}
-              className={styles.button}
-            >
-              Unfollow
-            </button>
-          ) : (
-            <button
-              disabled={props.followingInProgress.some(
-                (id) => id === props.profile.userId
-              )}
-              onClick={() => {
-                props.followThunkCreator(props.profile.userId);
-              }}
-              className={styles.button}
-            >
-              Follow
-            </button>
-          )}
-        ))}
-        </div> */}
-
-          {/* {props.users.map((u) => (
-            <div key={props.profile.userId} className={styles.user}>
-              <span>
-                <div>
-                  {u.followed ? (
-                    <button
-                      disabled={props.followingInProgress.some(
-                        (id) => id === u.id
-                      )}
-                      onClick={() => {
-                        props.unfollowThunkCreator(u.id);
-                      }}
-                      className={styles.button}
-                      key={u.id}
-                    >
-                      Unfollow
-                    </button>
-                  ) : (
-                    <button
-                      disabled={props.followingInProgress.some(
-                        (id) => id === u.id
-                      )}
-                      onClick={() => {
-                        props.followThunkCreator(u.id);
-                      }}
-                      className={styles.button}
-                      key={u.id}
-                    >
-                      Follow
-                    </button>
-                  )}
-                </div>
-              </span>
-            </div>
-          ))} */}
-        </div>
-        {/* ///////////////////////////////////////////////////////////// */}
         <div className={classes.profileDescription}>
           <div className={classes.fullName}>{props.profile.fullName}</div>
           <ProfileStatus
