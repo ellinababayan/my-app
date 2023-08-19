@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import classes from "./Login.module.css";
-import styles from "../base/Buttons.module.css";
-import stylerule from "../base/Errors.module.css";
-import { Formik, Form, Field, ErrorMessage, connect } from "formik";
 import loginUser from "../../redux/services/login.service";
+import logoutUser from "../../redux/services/logout.service";
 import { useNavigate } from "react-router";
+import LoginForm from "./LoginForm";
+import LogoutForm from "./LogoutForm";
 
 const Login = (props) => {
   const togglePassword = () => {
@@ -18,7 +18,8 @@ const Login = (props) => {
 
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(
-    localStorage.getItem("token") !== null
+    // localStorage.getItem("token") !== null
+    false
   );
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -35,107 +36,26 @@ const Login = (props) => {
     actions.setSubmitting(false);
   };
 
+  const handleLogout = () => {
+    logoutUser();
+    // localStorage.clear()
+    setIsLoggedIn(false);
+    navigate("/users");
+  };
+
   return (
     <div className={classes.login} onSubmit={props.handleSubmit}>
-      <Formik
-        initialValues={{ email: "", password: "" }}
-        validate={(values) => {
-          const errors = {};
-          if (!values.email) {
-            errors.email = "email is required";
-          }
-          if (!values.password) {
-            errors.password = "password is required";
-          }
-          return errors;
-        }}
-        onSubmit={handleLogin}
-      >
-        {({ isSubmitting }) => (
-          <div className={classes.loginField}>
-            <link
-              rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-              integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
-              crossOrigin="anonymous"
-              referrerPolicy="no-referrer"
-            />
-            <h1 className={classes.loginName}>You need to Log In</h1>
-            <Form>
-              <label htmlFor="login" className={classes.label}>
-                Login
-              </label>
-              <Field
-                type="email"
-                name="email"
-                className={classes.input}
-                placeholder="seasocial@gmail.com"
-              />
-
-              <div className={stylerule.error}>
-                <ErrorMessage
-                  name="email"
-                  component="div"
-                  className={stylerule.error_message}
-                />
-              </div>
-
-              <label htmlFor="password" className={classes.label}>
-                Password
-              </label>
-              <div>
-                <Field
-                  type="password"
-                  name="password"
-                  id="password"
-                  className={classes.input}
-                  placeholder="password"
-                />
-                <span className={classes.eye} onClick={togglePassword}>
-                  <i id="toggler" className="far fa-eye"></i>
-                </span>
-              </div>
-
-              <div className={stylerule.error}>
-                <ErrorMessage
-                  name="password"
-                  component="div"
-                  className={stylerule.error_message}
-                />
-              </div>
-
-              <label className={classes.remember} htmlFor="rememberMe">
-                <input
-                  type={"checkbox"}
-                  name="rememberMe"
-                  className={classes.checkbox}
-                  id="rememberMe"
-                />
-                <div className={classes.checkbox_input}></div>
-                Remember me
-              </label>
-
-              <div className={classes.buttonDiv}>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={styles.button_apricot}
-                >
-                  Submit
-                </button>
-              </div>
-              <div className={classes.buttonDiv}>
-                {errorMessage && (
-                  <div className={classes.error_message}>{errorMessage}</div>
-                )}
-              </div>
-            </Form>
-          </div>
-        )}
-      </Formik>
+      {/* {isLoggedIn ? (
+        <LogoutForm handleLogout={handleLogout} />
+      ) : ( */}
+        <LoginForm
+          togglePassword={togglePassword}
+          errorMessage={errorMessage}
+          handleLogin={handleLogin}
+        />
+      {/* )} */}
     </div>
   );
 };
 
-// export default connect(null, {login}) (Login); //was just export default Login
 export default Login;

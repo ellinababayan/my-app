@@ -1,12 +1,8 @@
 import { authAPI } from "../../api/api";
 
-const loginUser = async (values) => {
+const logoutUser = async (values) => {
   try {
-    const response = await authAPI.login(
-      values.email,
-      values.password,
-      values.rememberMe
-    );
+    const response = await authAPI.logout();
 
     console.log("Response Status:", response.status);
     const { token } = response.data;
@@ -18,8 +14,8 @@ const loginUser = async (values) => {
     if (error.response && error.response.status === 401) {
       throw new Error("Your email or password does not match");
     }
-    throw new Error("An error occurred while logging in");
+    throw new Error("An error occurred while logging out");
   }
 };
 
-export default loginUser;
+export default logoutUser;

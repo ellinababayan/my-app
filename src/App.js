@@ -6,7 +6,8 @@ import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
-
+import LogoutForm from "./components/Login/LogoutForm";
+import LoginForm from "./components/Login/LoginForm";
 
 const App = () => {
   return (
@@ -19,7 +20,10 @@ const App = () => {
           <Route path="/profile/:userId" element={<ProfileContainer />} />
           <Route exact path="/dialogs" element={<DialogsContainer />} />
           <Route exact path="/users" element={<UsersContainer />} />
-          <Route exact path="/login" element={<Login />} />
+          <Route path="/login" element={<Login />}>
+            {/* <Route path="/logout" element={<LogoutForm />} />
+            <Route path="/login" element={<LoginForm />} /> */}
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>

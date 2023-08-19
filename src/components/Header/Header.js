@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./Header.module.css";
-import { BrowserRouter, NavLink } from "react-router-dom";
+import { BrowserRouter, NavLink, Link } from "react-router-dom";
 
 const Header = (props) => {
   return (
@@ -13,7 +13,12 @@ const Header = (props) => {
       <div className={classes.login}>
         {props.isAuth ? (
           <div>
-            {props.login} &nbsp; <button onClick={props.logoutThunkCreator}>Log out</button>
+            {props.login} &nbsp;{" "}
+            <BrowserRouter>
+              <NavLink to={"/login"} className={classes.visited}>
+                Log Out
+              </NavLink>
+            </BrowserRouter>
           </div>
         ) : (
           <BrowserRouter>
@@ -23,6 +28,7 @@ const Header = (props) => {
           </BrowserRouter>
         )}
       </div>
+
     </header>
   );
 };
